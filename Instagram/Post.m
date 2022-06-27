@@ -33,9 +33,11 @@
     [newPost saveInBackgroundWithBlock: ^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             // The object has been saved.
+            completion(YES, nil);
         }
         else {
             NSLog(@"%@", error.localizedDescription);
+            completion(NO, error);
         }
     }];
 }
