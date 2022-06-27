@@ -10,6 +10,7 @@
 #import "SceneDelegate.h"
 #import "LoginViewController.h"
 #import "AppDelegate.h"
+#import "ImagePickerViewController.h"
 
 @interface HomeFeedViewController ()
 
@@ -22,19 +23,15 @@
     // Do any additional setup after loading the view.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"composePost"]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        ImagePickerViewController *imagePicker = (ImagePickerViewController *) navigationController.topViewController;
+//        imagePicker.delegate = self;
+    }
 }
-*/
+    
 - (IBAction)didTapLogout:(id)sender {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    self.view.window.rootViewController = loginViewController;
 
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         if (error != nil) {
@@ -43,9 +40,15 @@
         else {
             NSLog(@"Logout successful!");
         }
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        self.view.window.rootViewController = loginViewController;
+
     }];
 }
 - (IBAction)didTapCameraIcon:(id)sender {
+
 }
 
 @end

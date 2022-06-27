@@ -134,10 +134,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Logout"/>
+                                <connections>
+                                    <action selector="didTapLogout:" destination="PRR-dR-qYD" eventType="touchUpInside" id="rQE-dR-c0M"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <action selector="didTapLogout:" destination="PRR-dR-qYD" id="q1e-AX-pWr"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="H7v-0V-V0p">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="iUk-IP-nnk">
@@ -148,7 +148,7 @@
                             </button>
                             <connections>
                                 <action selector="didTapCameraIcon:" destination="PRR-dR-qYD" id="1B5-f7-4Bw"/>
-                                <segue destination="KLH-gw-O9u" kind="presentation" id="egj-5H-qH4"/>
+                                <segue destination="KLH-gw-O9u" kind="presentation" identifier="composePost" id="egj-5H-qH4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -179,7 +179,8 @@
         <!--Compose View Controller-->
         <scene sceneID="CMg-mv-VYJ">
             <objects>
-                <viewController title="Compose View Controller" id="SHX-pE-vFD" customClass="ComposeViewController" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l4t-le-QiB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController title="Compose View Controller" id="SHX-pE-vFD" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q9e-QD-94g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -223,7 +224,6 @@
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="l4t-le-QiB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="328" y="954"/>
         </scene>

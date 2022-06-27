@@ -1,17 +1,17 @@
 //
-//  ComposeViewController.m
+//  ImagePickerViewController.m
 //  Instagram
 //
 //  Created by Mai Ngo on 6/27/22.
 //
 
-#import "ComposeViewController.h"
+#import "ImagePickerViewController.h"
 
-@interface ComposeViewController ()
+@interface ImagePickerViewController ()
 
 @end
 
-@implementation ComposeViewController
+@implementation ImagePickerViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,10 +27,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-- (IBAction)didTapCancel:(id)sender {
-}
-
-- (IBAction)didTapShare:(id)sender {
-}
 
 @end

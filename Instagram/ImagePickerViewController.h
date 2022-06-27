@@ -1,5 +1,5 @@
 //
-//  ComposeViewController.h
+//  ImagePickerViewController.h
 //  Instagram
 //
 //  Created by Mai Ngo on 6/27/22.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ComposeViewController : UIViewController
+@interface ImagePickerViewController : UIViewController
 
 @end
 
