@@ -24,11 +24,6 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"composePost"]) {
-        UINavigationController *navigationController = [segue destinationViewController];
-        ImagePickerViewController *imagePicker = (ImagePickerViewController *) navigationController.topViewController;
-//        imagePicker.delegate = self;
-    }
 }
     
 - (IBAction)didTapLogout:(id)sender {
@@ -48,7 +43,9 @@
     }];
 }
 - (IBAction)didTapCameraIcon:(id)sender {
-
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ImagePickerViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"composePost"];
+    self.view.window.rootViewController = vc;
 }
 
 @end

@@ -139,17 +139,16 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="H7v-0V-V0p">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="iUk-IP-nnk">
+                        <barButtonItem key="rightBarButtonItem" image="insta_camera_btn.png" style="plain" id="erW-gy-MD3">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="HsI-9y-35t">
                                 <rect key="frame" x="302" y="8.5" width="92" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="insta_camera_btn.png" title=""/>
+                                <buttonConfiguration key="configuration" style="plain" image="insta_camera_btn.png" title="Button"/>
+                                <connections>
+                                    <action selector="didTapCameraIcon:" destination="PRR-dR-qYD" eventType="touchUpInside" id="f10-x8-Rjz"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <action selector="didTapCameraIcon:" destination="PRR-dR-qYD" id="1B5-f7-4Bw"/>
-                                <segue destination="KLH-gw-O9u" kind="presentation" identifier="composePost" id="egj-5H-qH4"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
@@ -180,9 +179,9 @@
         <scene sceneID="CMg-mv-VYJ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l4t-le-QiB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController title="Compose View Controller" id="SHX-pE-vFD" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImagePickerViewController" title="Compose View Controller" id="SHX-pE-vFD" customClass="ImagePickerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q9e-QD-94g">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dYH-F3-97n">
@@ -202,27 +201,31 @@
                     <navigationItem key="navigationItem" id="CTv-k9-GVg">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" style="plain" id="ehz-MT-qzZ">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="j0f-cU-qqo">
-                                <rect key="frame" x="20" y="11" width="92" height="34.5"/>
+                                <rect key="frame" x="20" y="5" width="92" height="34.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                <connections>
+                                    <action selector="onCancelTap:" destination="SHX-pE-vFD" eventType="touchUpInside" id="7sQ-Qf-Kut"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <action selector="didTapCancel:" destination="SHX-pE-vFD" id="SFF-0o-KdW"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Share" style="plain" id="PGd-hg-X1j">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="9Xe-e9-wz4">
-                                <rect key="frame" x="302" y="11" width="92" height="34.5"/>
+                                <rect key="frame" x="302" y="5" width="92" height="34.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Share"/>
+                                <connections>
+                                    <action selector="onShareTap:" destination="SHX-pE-vFD" eventType="touchUpInside" id="FVM-pz-483"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <action selector="didTapShare:" destination="SHX-pE-vFD" id="WUD-v2-aWu"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="captionField" destination="URU-cg-UYC" id="QMd-HS-rKb"/>
+                        <outlet property="imageView" destination="dYH-F3-97n" id="FAZ-KP-VsG"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="328" y="954"/>
@@ -259,11 +262,11 @@
         <!--Compose-->
         <scene sceneID="hSV-sn-g4N">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KLH-gw-O9u" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="composePost" automaticallyAdjustsScrollViewInsets="NO" id="KLH-gw-O9u" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Compose" id="L7w-Wx-BZR"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oaD-Pj-sh1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

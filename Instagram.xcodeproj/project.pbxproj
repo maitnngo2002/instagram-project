@@ -15,6 +15,7 @@
 		D64D18AB286A475C0040E439 /* HomeFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D64D18AA286A475C0040E439 /* HomeFeedViewController.m */; };
 		D64D18B1286A49550040E439 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D64D18B0286A49550040E439 /* ProfileViewController.m */; };
 		D64D18B4286A535A0040E439 /* ImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D64D18B3286A535A0040E439 /* ImagePickerViewController.m */; };
+		D64D18B7286A5E590040E439 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = D64D18B6286A5E590040E439 /* Post.m */; };
 		D650BEE1286A3F7700D28D22 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D650BEE0286A3F7700D28D22 /* AppDelegate.m */; };
 		D650BEE4286A3F7700D28D22 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D650BEE3286A3F7700D28D22 /* SceneDelegate.m */; };
 		D650BEEA286A3F7800D28D22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D650BEE8286A3F7800D28D22 /* Main.storyboard */; };
@@ -60,6 +61,8 @@
 		D64D18B0286A49550040E439 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		D64D18B2286A535A0040E439 /* ImagePickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImagePickerViewController.h; sourceTree = "<group>"; };
 		D64D18B3286A535A0040E439 /* ImagePickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImagePickerViewController.m; sourceTree = "<group>"; };
+		D64D18B5286A5E590040E439 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		D64D18B6286A5E590040E439 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		D650BEDC286A3F7700D28D22 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D650BEDF286A3F7700D28D22 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D650BEE0286A3F7700D28D22 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -173,6 +176,8 @@
 				D64D18B0286A49550040E439 /* ProfileViewController.m */,
 				D64D18B2286A535A0040E439 /* ImagePickerViewController.h */,
 				D64D18B3286A535A0040E439 /* ImagePickerViewController.m */,
+				D64D18B5286A5E590040E439 /* Post.h */,
+				D64D18B6286A5E590040E439 /* Post.m */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -440,6 +445,7 @@
 				D650BEE4286A3F7700D28D22 /* SceneDelegate.m in Sources */,
 				D64D18B4286A535A0040E439 /* ImagePickerViewController.m in Sources */,
 				D64D18A8286A474F0040E439 /* LoginViewController.m in Sources */,
+				D64D18B7286A5E590040E439 /* Post.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,10 +6,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Post.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol ImagePickerViewControllerDelegate <NSObject>
+-(void)didPost:(Post *)post;
+
+@end
 @interface ImagePickerViewController : UIViewController
+@property (weak, nonatomic) id<ImagePickerViewControllerDelegate> delegate;
 
 @end
 
