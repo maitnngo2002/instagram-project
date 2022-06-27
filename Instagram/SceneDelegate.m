@@ -6,6 +6,7 @@
 //
 
 #import "SceneDelegate.h"
+#import "Parse/Parse.h"
 
 @interface SceneDelegate ()
 

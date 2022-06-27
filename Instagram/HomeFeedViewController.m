@@ -6,6 +6,10 @@
 //
 
 #import "HomeFeedViewController.h"
+#import "Parse/Parse.h"
+#import "SceneDelegate.h"
+#import "LoginViewController.h"
+#import "AppDelegate.h"
 
 @interface HomeFeedViewController ()
 
@@ -28,6 +32,18 @@
 }
 */
 - (IBAction)didTapLogout:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    self.view.window.rootViewController = loginViewController;
+
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        else {
+            NSLog(@"Logout successful!");
+        }
+    }];
 }
 - (IBAction)didTapCameraIcon:(id)sender {
 }
