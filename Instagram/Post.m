@@ -58,7 +58,7 @@
     if (!image) {
         return nil;
     }
-    
+
     NSData *imageData = UIImagePNGRepresentation(image);
     if (!imageData) {
         return nil;

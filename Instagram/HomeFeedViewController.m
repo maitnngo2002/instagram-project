@@ -13,6 +13,7 @@
 #import "ImagePickerViewController.h"
 #import "PostTableViewCell.h"
 #import "Post.h"
+#import "DetailsViewController.h"
 
 @interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource, ImagePickerViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -45,12 +46,10 @@
 
 - (void)queryDatabase {
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-    [query whereKey:@"likesCount" greaterThan:@100];
     [query orderByDescending:@"createdAt"];
-    
     query.limit = 20;
-
-    // fetch data asynchronously
+    [query includeKey:@"author"];
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             self.posts = (NSMutableArray *) posts;
@@ -62,6 +61,19 @@
     }];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"composePost"]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        ImagePickerViewController *imagePicker = (ImagePickerViewController *) navigationController.topViewController;
+        imagePicker.delegate = self;
+    }
+    else if ([segue.identifier isEqualToString:@"detailsView"]) {
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Post *currentPost = self.posts[indexPath.row];
+        DetailsViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController.post = currentPost;
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
     
 - (IBAction)didTapLogout:(id)sender {
