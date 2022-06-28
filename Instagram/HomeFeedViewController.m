@@ -42,7 +42,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             self.posts = (NSMutableArray *) posts;
-//            [self.tableView reloadData];
+            [self.tableView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }

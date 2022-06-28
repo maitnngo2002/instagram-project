@@ -123,7 +123,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="captionLabel" destination="RKF-VF-DuN" id="t9v-km-bye"/>
-                                            <outlet property="imageView" destination="Hgk-ZB-w8p" id="whO-3O-VXt"/>
+                                            <outlet property="postImage" destination="Hgk-ZB-w8p" id="tCJ-fr-tU7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -186,7 +186,6 @@
         <!--Compose View Controller-->
         <scene sceneID="CMg-mv-VYJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="l4t-le-QiB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ImagePickerViewController" title="Compose View Controller" id="SHX-pE-vFD" customClass="ImagePickerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q9e-QD-94g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -235,6 +234,7 @@
                         <outlet property="imageView" destination="dYH-F3-97n" id="FAZ-KP-VsG"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l4t-le-QiB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="328" y="954"/>
         </scene>
