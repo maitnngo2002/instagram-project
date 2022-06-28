@@ -109,6 +109,9 @@
     cell.captionLabel.text = post.caption;
     [cell setPost:post];
     
+    if(indexPath.row == self.posts.count - 1) {
+        [self queryDatabase];
+    }
     return cell;
 }
 

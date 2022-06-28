@@ -12,7 +12,7 @@
 
 -(void)setPost:(Post *)post {
     _post = post;
-    self.postImage.image = post[@"image"];
+    self.postImage.file = post[@"image"];
     [self.postImage loadInBackground];
 }
 
