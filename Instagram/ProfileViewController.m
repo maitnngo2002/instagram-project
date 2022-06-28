@@ -9,6 +9,8 @@
 #import "Parse/Parse.h"
 #import "Post.h"
 #import "PostCollectionCell.h"
+#import "DetailsViewController.h"
+#import "EditProfileViewController.h"
 
 @interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *profileView;
@@ -88,15 +90,19 @@
     }];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"detailSegue"]) {
+        UICollectionViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
+        Post *post = self.postsArray[indexPath.row];
+        DetailsViewController *detailsViewController =  [segue destinationViewController];
+        detailsViewController.post = post;
+    }
+    else if ([segue.identifier isEqualToString:@"editProfileSegue"]) {
+        EditProfileViewController *editProfileViewController =  [segue destinationViewController];
+        editProfileViewController.user = self.user;
+    }
 }
-*/
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PostCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PostCollectionCell" forIndexPath:indexPath];

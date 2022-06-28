@@ -367,6 +367,7 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="postView" destination="XiC-pI-awt" id="pCk-RT-ukM"/>
+                                            <segue destination="fUd-Wq-xwm" kind="show" identifier="detailSegue" id="khb-HQ-gEd"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -377,7 +378,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Edit Profile"/>
                                 <connections>
-                                    <segue destination="24a-JU-GKj" kind="presentation" id="FTv-U2-gjK"/>
+                                    <segue destination="24a-JU-GKj" kind="presentation" identifier="editProfileSegue" id="FTv-U2-gjK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -500,6 +501,9 @@
             <point key="canvasLocation" x="1195.6521739130435" y="953.57142857142856"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="khb-HQ-gEd"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="favor-icon" width="30" height="30"/>
         <image name="feed_tab.png" width="25" height="25"/>
