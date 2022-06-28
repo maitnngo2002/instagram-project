@@ -90,7 +90,7 @@
         <!--Home Feed View Controller-->
         <scene sceneID="Hz8-Ti-h7K">
             <objects>
-                <viewController storyboardIdentifier="HomeFeedViewController" title="Home Feed View Controller" id="PRR-dR-qYD" customClass="HomeFeedViewController" sceneMemberID="viewController">
+                <viewController title="Home Feed View Controller" id="PRR-dR-qYD" customClass="HomeFeedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Rn-bZ-3Zm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -167,7 +167,7 @@
         <!--Feed-->
         <scene sceneID="vU6-LJ-Zsq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hGb-cd-a5E" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeFeedViewController" automaticallyAdjustsScrollViewInsets="NO" id="hGb-cd-a5E" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Feed" image="feed_tab.png" id="KNy-9G-hKX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ws2-VP-hSO">

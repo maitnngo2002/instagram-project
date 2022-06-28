@@ -13,7 +13,7 @@
 -(void)setPost:(Post *)post {
     _post = post;
     self.postImage.image = post[@"image"];
-    [self.postImage loadInBackground];
+//    [self.postImage loadInBackground];
 }
 
 @end
