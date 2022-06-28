@@ -108,13 +108,36 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="455"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKF-VF-DuN">
+                                                    <rect key="frame" x="9" y="316" width="385" height="41"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hgk-ZB-w8p" customClass="PFImageView">
                                                     <rect key="frame" x="0.0" y="-3" width="414" height="311"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" systemColor="systemRedColor"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKF-VF-DuN">
-                                                    <rect key="frame" x="20" y="349" width="346" height="95"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYg-2Y-vHW">
+                                                    <rect key="frame" x="0.0" y="355" width="54" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="favor-icon" title=""/>
+                                                    <connections>
+                                                        <action selector="didTapLike:" destination="Ccv-GW-Izf" eventType="touchUpInside" id="AXY-Ha-ugr"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQd-Fq-udW">
+                                                    <rect key="frame" x="12" y="400" width="45" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q14-7e-qyd">
+                                                    <rect key="frame" x="65" y="400" width="34" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -124,6 +147,9 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="captionLabel" destination="RKF-VF-DuN" id="t9v-km-bye"/>
+                                            <outlet property="favoriteButton" destination="CYg-2Y-vHW" id="ZaP-vG-hZM"/>
+                                            <outlet property="likeCount" destination="CQd-Fq-udW" id="tyw-it-Rhp"/>
+                                            <outlet property="likeLabel" destination="Q14-7e-qyd" id="P1j-FD-vRd"/>
                                             <outlet property="postImage" destination="Hgk-ZB-w8p" id="tCJ-fr-tU7"/>
                                             <segue destination="fUd-Wq-xwm" kind="show" identifier="detailsView" id="R4d-LP-iPH"/>
                                         </connections>
@@ -148,10 +174,10 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="insta_camera_btn.png" style="plain" id="erW-gy-MD3">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="HsI-9y-35t">
-                                <rect key="frame" x="294" y="8.5" width="100" height="39"/>
+                                <rect key="frame" x="345" y="8.5" width="49" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="insta_camera_btn.png" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="insta_camera_btn.png" title=""/>
                                 <connections>
                                     <action selector="didTapCameraIcon:" destination="PRR-dR-qYD" eventType="touchUpInside" id="f10-x8-Rjz"/>
                                 </connections>
@@ -475,6 +501,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="favor-icon" width="30" height="30"/>
         <image name="feed_tab.png" width="25" height="25"/>
         <image name="insta_camera_btn.png" width="25" height="25"/>
         <image name="profile_tab.png" width="25" height="25"/>

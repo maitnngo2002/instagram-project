@@ -6,6 +6,7 @@
 //
 
 #import "PostTableViewCell.h"
+#import "Parse/Parse.h"
 @import Parse;
 
 @implementation PostTableViewCell
@@ -15,5 +16,31 @@
     self.postImage.file = post[@"image"];
     [self.postImage loadInBackground];
 }
+- (IBAction)didTapLike:(id)sender {
+    PFUser *user = [PFUser currentUser];
+    NSArray *likeArray = [[NSArray alloc] init];
+    likeArray = [self.post objectForKey:@"likeArray"];
+    NSString *username = [user objectForKey:@"username"];
+    if(![likeArray containsObject:username]) {
+        [self.favoriteButton setSelected:YES];
+        [self.post addObject:username forKey:@"likeArray"];
+        [self.post saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        }];
+        likeArray = [self.post objectForKey:@"likeArray"];
+        NSString *likeCount = [NSString stringWithFormat:@"%lu", (unsigned long)likeArray.count];
+        self.likeCount.text = likeCount;
+    }
+    else {
+        [self.favoriteButton setSelected:NO];
+        [self.post removeObject:username forKey:@"likeArray"];
+        [self.post saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        }];
+        likeArray = [self.post objectForKey:@"likeArray"];
+        NSString *likeCount = [NSString stringWithFormat:@"%lu", (unsigned long)likeArray.count];
+        self.likeCount.text = likeCount;
+    }
+
+}
+
 
 @end

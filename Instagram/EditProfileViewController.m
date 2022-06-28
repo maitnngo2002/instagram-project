@@ -11,6 +11,8 @@
 @interface EditProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *profileView;
 @property (weak, nonatomic) IBOutlet UITextField *bioField;
+@property (strong, nonatomic) UIImage *originalImage;
+@property (strong, nonatomic) UIImage *editedImage;
 
 @end
 
@@ -53,6 +55,41 @@
     }
     
     [self presentViewController:imagePickerVC animated:YES completion:nil];
+}
+
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    
+    self.originalImage = originalImage;
+    self.editedImage = [self resizeImage:editedImage withSize:CGSizeMake(400, 400)];
+    self.profileView.image = self.editedImage;
+    NSData *imageData = UIImageJPEGRepresentation(editedImage, 1);
+    PFFileObject *imageFile = [PFFileObject fileObjectWithName:@"image.png" data: imageData];
+    [imageFile saveInBackground];
+    [self.user setObject:imageFile forKey:@"image"];
+    [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            
+        }
+    }];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
