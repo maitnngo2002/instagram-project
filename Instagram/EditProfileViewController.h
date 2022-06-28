@@ -1,8 +1,8 @@
 //
-//  ProfileViewController.h
+//  EditProfileViewController.h
 //  Instagram
 //
-//  Created by Mai Ngo on 6/27/22.
+//  Created by Mai Ngo on 6/28/22.
 //
 
 #import <UIKit/UIKit.h>
@@ -10,8 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ProfileViewController : UIViewController
-
+@interface EditProfileViewController : UIViewController
 @property (strong, nonatomic) PFUser *user;
 
 @end

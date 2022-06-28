@@ -27,6 +27,8 @@
 		D650BEFC286A3F7900D28D22 /* InstagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D650BEFB286A3F7900D28D22 /* InstagramTests.m */; };
 		D650BF06286A3F7900D28D22 /* InstagramUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D650BF05286A3F7900D28D22 /* InstagramUITests.m */; };
 		D650BF08286A3F7900D28D22 /* InstagramUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D650BF07286A3F7900D28D22 /* InstagramUITestsLaunchTests.m */; };
+		D6E5C509286B7B01003850E3 /* PostCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E5C508286B7B01003850E3 /* PostCollectionCell.m */; };
+		D6E5C50C286B8086003850E3 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E5C50B286B8086003850E3 /* EditProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,10 @@
 		D650BF01286A3F7900D28D22 /* InstagramUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstagramUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D650BF05286A3F7900D28D22 /* InstagramUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstagramUITests.m; sourceTree = "<group>"; };
 		D650BF07286A3F7900D28D22 /* InstagramUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstagramUITestsLaunchTests.m; sourceTree = "<group>"; };
+		D6E5C507286B7B01003850E3 /* PostCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCollectionCell.h; sourceTree = "<group>"; };
+		D6E5C508286B7B01003850E3 /* PostCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCollectionCell.m; sourceTree = "<group>"; };
+		D6E5C50A286B8086003850E3 /* EditProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
+		D6E5C50B286B8086003850E3 /* EditProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		D756CBE36BE0A637F7B0D0DA /* Pods-Instagram-InstagramUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram-InstagramUITests.release.xcconfig"; path = "Target Support Files/Pods-Instagram-InstagramUITests/Pods-Instagram-InstagramUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F8400C1B5B84047AE43333F2 /* Pods-Instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.debug.xcconfig"; path = "Target Support Files/Pods-Instagram/Pods-Instagram.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -188,6 +194,10 @@
 				D64D18B9286A6DF60040E439 /* PostTableViewCell.m */,
 				D64D18BB286AAFFF0040E439 /* DetailsViewController.h */,
 				D64D18BC286AAFFF0040E439 /* DetailsViewController.m */,
+				D6E5C507286B7B01003850E3 /* PostCollectionCell.h */,
+				D6E5C508286B7B01003850E3 /* PostCollectionCell.m */,
+				D6E5C50A286B8086003850E3 /* EditProfileViewController.h */,
+				D6E5C50B286B8086003850E3 /* EditProfileViewController.m */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -450,11 +460,13 @@
 			files = (
 				D64D18AB286A475C0040E439 /* HomeFeedViewController.m in Sources */,
 				D64D18BD286AAFFF0040E439 /* DetailsViewController.m in Sources */,
+				D6E5C509286B7B01003850E3 /* PostCollectionCell.m in Sources */,
 				D64D18BA286A6DF60040E439 /* PostTableViewCell.m in Sources */,
 				D64D18B1286A49550040E439 /* ProfileViewController.m in Sources */,
 				D650BEE1286A3F7700D28D22 /* AppDelegate.m in Sources */,
 				D650BEF2286A3F7800D28D22 /* main.m in Sources */,
 				D650BEE4286A3F7700D28D22 /* SceneDelegate.m in Sources */,
+				D6E5C50C286B8086003850E3 /* EditProfileViewController.m in Sources */,
 				D64D18B4286A535A0040E439 /* ImagePickerViewController.m in Sources */,
 				D64D18A8286A474F0040E439 /* LoginViewController.m in Sources */,
 				D64D18B7286A5E590040E439 /* Post.m in Sources */,
