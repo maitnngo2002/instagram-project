@@ -12,14 +12,20 @@
 #import "AppDelegate.h"
 #import "ImagePickerViewController.h"
 #import "PostTableViewCell.h"
+#import "Post.h"
 
-@interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate>
+@interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource, ImagePickerViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *posts;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
 @implementation HomeFeedViewController
+
+-(void)viewWillAppear:(BOOL)animated {
+    [self.tableView reloadData];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,6 +35,12 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     [self queryDatabase];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self
+                         action:@selector(queryDatabase)
+                         forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
 - (void)queryDatabase {
@@ -46,6 +58,7 @@
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
+        [self.refreshControl endRefreshing];
     }];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
