@@ -14,11 +14,13 @@
 #import "PostTableViewCell.h"
 #import "Post.h"
 #import "DetailsViewController.h"
+#import "MBProgressHUD/MBProgressHUD.h"
 
-@interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource, ImagePickerViewControllerDelegate>
+@interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, ImagePickerViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *posts;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (assign, nonatomic) BOOL isMoreDataLoading;
 
 @end
 
@@ -35,8 +37,8 @@
     self.tableView.delegate = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-    [self queryDatabase];
-    
+//    [self queryDatabase];
+    [self queryDatabaseWithFilter:nil];
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self
                          action:@selector(queryDatabase)
@@ -50,6 +52,8 @@
     query.limit = 20;
     [query includeKey:@"author"];
     
+//    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             self.posts = (NSMutableArray *) posts;
@@ -57,7 +61,39 @@
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
+        
         [self.refreshControl endRefreshing];
+//        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+    }];
+}
+
+- (void) queryDatabaseWithFilter:(NSDate *)lastDate {
+    PFQuery *postQuery = [Post query];
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
+    if(lastDate) {
+        [postQuery whereKey:@"createdAt" lessThan:lastDate];
+    }
+    postQuery.limit = 20;
+
+    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+        if ([posts count] != 0) {
+            if(lastDate){
+                self.isMoreDataLoading = NO;
+                [self.posts addObjectsFromArray:posts];
+            }
+            else {
+                self.posts = (NSMutableArray *) posts;
+            }
+            [self.tableView reloadData];
+            NSLog(@"😎😎😎 Successfully loaded home timeline");
+        }
+        else {
+            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+        }
+        [self.refreshControl endRefreshing];
+        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     }];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -109,9 +145,6 @@
     cell.captionLabel.text = post.caption;
     [cell setPost:post];
     
-    if(indexPath.row == self.posts.count - 1) {
-        [self queryDatabase];
-    }
     return cell;
 }
 
@@ -121,4 +154,16 @@
     [self.tableView reloadData];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(!self.isMoreDataLoading){
+        int scrollViewContentHeight = self.tableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
+            self.isMoreDataLoading = true;
+            Post *lastPost = [self.posts lastObject];
+            NSDate *lastDate = lastPost.createdAt;
+            [self queryDatabaseWithFilter:lastDate];
+        }
+    }
+}
 @end
