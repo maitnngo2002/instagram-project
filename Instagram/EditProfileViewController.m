@@ -85,7 +85,6 @@
     [self.user setObject:imageFile forKey:@"image"];
     [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
-            
         }
     }];
     

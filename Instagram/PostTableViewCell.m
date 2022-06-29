@@ -49,7 +49,6 @@
         NSString *likeCount = [NSString stringWithFormat:@"%lu", (unsigned long)likeArray.count];
         self.likeCount.text = likeCount;
     }
-
 }
 
 @end

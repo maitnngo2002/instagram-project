@@ -39,7 +39,6 @@
     self.tableView.delegate = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-//    [self queryDatabase];
     [self queryDatabaseWithFilter:nil];
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self
@@ -54,7 +53,7 @@
     query.limit = 20;
     [query includeKey:@"author"];
     
-//    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
@@ -65,7 +64,7 @@
         }
         
         [self.refreshControl endRefreshing];
-//        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     }];
 }
 
@@ -99,19 +98,6 @@
     }];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if ([segue.identifier isEqualToString:@"composePost"]) {
-//        UINavigationController *navigationController = [segue destinationViewController];
-//        ImagePickerViewController *imagePicker = (ImagePickerViewController *) navigationController.topViewController;
-//        imagePicker.delegate = self;
-//    }
-//    else if ([segue.identifier isEqualToString:@"detailsView"]) {
-//        UITableViewCell *tappedCell = sender;
-//        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-//        Post *currentPost = self.posts[indexPath.row];
-//        DetailsViewController *detailsViewController = [segue destinationViewController];
-//        detailsViewController.post = currentPost;
-//        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    }
     if([segue.identifier isEqualToString:@"detailsView"]) {
         PostTableViewCell *tappedCell = sender;
         DetailsViewController *detailsViewController =  [segue destinationViewController];
@@ -125,7 +111,6 @@
 }
     
 - (IBAction)didTapLogout:(id)sender {
-
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
