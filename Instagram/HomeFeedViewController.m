@@ -16,6 +16,7 @@
 #import "DetailsViewController.h"
 #import "MBProgressHUD/MBProgressHUD.h"
 #import "PostTableViewCell.h"
+#import "ProfileViewController.h"
 
 @interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, ImagePickerViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -98,18 +99,28 @@
     }];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"composePost"]) {
-        UINavigationController *navigationController = [segue destinationViewController];
-        ImagePickerViewController *imagePicker = (ImagePickerViewController *) navigationController.topViewController;
-        imagePicker.delegate = self;
+//    if ([segue.identifier isEqualToString:@"composePost"]) {
+//        UINavigationController *navigationController = [segue destinationViewController];
+//        ImagePickerViewController *imagePicker = (ImagePickerViewController *) navigationController.topViewController;
+//        imagePicker.delegate = self;
+//    }
+//    else if ([segue.identifier isEqualToString:@"detailsView"]) {
+//        UITableViewCell *tappedCell = sender;
+//        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+//        Post *currentPost = self.posts[indexPath.row];
+//        DetailsViewController *detailsViewController = [segue destinationViewController];
+//        detailsViewController.post = currentPost;
+//        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    }
+    if([segue.identifier isEqualToString:@"detailsView"]) {
+        PostTableViewCell *tappedCell = sender;
+        DetailsViewController *detailsViewController =  [segue destinationViewController];
+        detailsViewController.post = tappedCell.post;
+        detailsViewController.user = self.user;
     }
-    else if ([segue.identifier isEqualToString:@"detailsView"]) {
-        UITableViewCell *tappedCell = sender;
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-        Post *currentPost = self.posts[indexPath.row];
-        DetailsViewController *detailsViewController = [segue destinationViewController];
-        detailsViewController.post = currentPost;
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    else if([segue.identifier isEqualToString:@"profileSegue"]) {
+        ProfileViewController *profileViewController =  [segue destinationViewController];
+        profileViewController.user = sender;
     }
 }
     
@@ -145,7 +156,41 @@
     Post *post = self.posts[indexPath.row];
     cell.captionLabel.text = post.caption;
     [cell setPost:post];
+    self.user = [PFUser currentUser];
+
+    PFFileObject *image = [post.author objectForKey:@"image"];
     
+    cell.userLabel1.text = post.author.username;
+    cell.userLabel2.text = post.author.username;
+
+    [image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!data) {
+            return NSLog(@"%@", error);
+        }
+        cell.profileView.image = [UIImage imageWithData:data];
+    }];
+    cell.profileView.layer.cornerRadius = cell.profileView.frame.size.height/2;
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+    [formatter setDateFormat:@"E MMM d HH:mm:ss Z y"];
+    NSDate *createdAt = [post createdAt];
+    NSDate *todayDate = [NSDate date];
+    double ti = [createdAt timeIntervalSinceDate:todayDate];
+    ti = ti * -1;
+    if (ti < 60) {
+        cell.dateLabel.text = @"less than a min ago";
+    } else if (ti < 3600) {
+        int diff = round(ti / 60);
+        cell.dateLabel.text = [NSString stringWithFormat:@"%d min ago", diff];
+    } else if (ti < 86400) {
+        int diff = round(ti / 60 / 60);
+        cell.dateLabel.text = [NSString stringWithFormat:@"%d hr ago", diff];
+    } else {
+        formatter.dateStyle = NSDateFormatterShortStyle;
+        formatter.timeStyle = NSDateFormatterNoStyle;
+        cell.dateLabel.text = [formatter stringFromDate:createdAt];
+    }
     return cell;
 }
 

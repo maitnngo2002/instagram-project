@@ -7,11 +7,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Post.h"
+#import "PostTableViewCell.h"
 @import Parse;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol PostDelegate;
+@protocol PostTableViewCellDelegate;
 
 @interface PostTableViewCell : UITableViewCell
 
@@ -26,13 +27,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @property (strong, nonatomic) Post *post;
-//@property (nonatomic, weak) id<PostCellDelegate> delegate;
+@property (nonatomic, weak) id<PostTableViewCellDelegate> delegate;
 
 @end
 
-@protocol PostCellDelegate
+@protocol PostTableViewCellDelegate
 
-- (void)postCell:(PostTableViewCell *)postCell didTap: (PFUser *)user;
+- (void)postTableViewCell:(PostTableViewCell *)postTableViewCell didTap: (PFUser *)user;
 
 @end
 

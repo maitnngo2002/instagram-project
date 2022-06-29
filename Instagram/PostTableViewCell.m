@@ -6,19 +6,25 @@
 //
 
 #import "PostTableViewCell.h"
-#import "Parse/Parse.h"
-@import Parse;
 
 @implementation PostTableViewCell
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    [self.profileView setUserInteractionEnabled:YES];
+    UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUserProfile:)];
+    [self.profileView addGestureRecognizer:profileTapGestureRecognizer];
+    [self.profileView setUserInteractionEnabled:YES];
+}
+
+- (void) didTapUserProfile:(UITapGestureRecognizer *)sender{
+    [self.delegate postTableViewCell:self didTap:self.post.author];
+}
 -(void)setPost:(Post *)post {
     _post = post;
     self.postImage.file = post[@"image"];
     [self.postImage loadInBackground];
-    
-    UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUserProfile:)];
-    [self.profileView addGestureRecognizer:profileTapGestureRecognizer];
-    [self.profileView setUserInteractionEnabled:YES];
 }
 - (IBAction)didTapLike:(id)sender {
     PFUser *user = [PFUser currentUser];
@@ -46,7 +52,4 @@
 
 }
 
-//- (void) didTapUserProfile:(UITapGestureRecognizer *)sender{
-//    [self.delegate postCell:self didTap:self.post.author];
-//}
 @end
