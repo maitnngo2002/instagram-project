@@ -15,6 +15,7 @@
 #import "Post.h"
 #import "DetailsViewController.h"
 #import "MBProgressHUD/MBProgressHUD.h"
+#import "PostTableViewCell.h"
 
 @interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, ImagePickerViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -165,5 +166,9 @@
             [self queryDatabaseWithFilter:lastDate];
         }
     }
+}
+
+- (void)postCell:(PostTableViewCell *)postCell didTap:(PFUser *)user{
+    [self performSegueWithIdentifier:@"profileSegue" sender:user];
 }
 @end
