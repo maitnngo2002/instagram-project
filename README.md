@@ -35,7 +35,8 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [x] Profile tab displays all posts posted by the user and users could click on a photo to see the detail of that post.
+- [x] Profile tab displays all posts posted by the user using CollectionView
+- [x] User could tap on a cell to see the details of that post
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
