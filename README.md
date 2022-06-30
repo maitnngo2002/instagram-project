@@ -36,7 +36,8 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [x] Profile tab displays all posts posted by the user using CollectionView
-- [x] User could tap on a cell to see the details of that post
+- [x] User could tap on a cell in their profile tab to see the details of that post
+- [x] User could add a bio to their profile tab
 - [x] User will see an alert if the username or password field is empty or if they enter an invalid username/ incorrect password
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
