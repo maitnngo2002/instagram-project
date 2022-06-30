@@ -171,7 +171,23 @@
         formatter.timeStyle = NSDateFormatterNoStyle;
         cell.dateLabel.text = [formatter stringFromDate:createdAt];
     }
+    
+    UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUserProfile:)];
+    [cell.profileView addGestureRecognizer:profileTapGestureRecognizer];
+    [cell.profileView setUserInteractionEnabled:YES];
+    
     return cell;
+}
+
+- (void) didTapUserProfile:(UITapGestureRecognizer *)tapGesture {
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main"
+                                                         bundle:nil];
+    ProfileViewController *profileViewController =
+               [storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+
+    [self presentViewController:profileViewController
+                       animated:YES
+                     completion:nil];
 }
 
 -(void)didPost:(Post *)post {

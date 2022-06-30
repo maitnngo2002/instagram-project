@@ -145,6 +145,45 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D61D61DF286E442C0083B1FE /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D6E5C50A286B8086003850E3 /* EditProfileViewController.h */,
+				D6E5C50B286B8086003850E3 /* EditProfileViewController.m */,
+				D64D18BB286AAFFF0040E439 /* DetailsViewController.h */,
+				D64D18BC286AAFFF0040E439 /* DetailsViewController.m */,
+				D64D18B3286A535A0040E439 /* ImagePickerViewController.m */,
+				D64D18B2286A535A0040E439 /* ImagePickerViewController.h */,
+				D64D18B0286A49550040E439 /* ProfileViewController.m */,
+				D64D18A6286A474F0040E439 /* LoginViewController.h */,
+				D64D18AF286A49550040E439 /* ProfileViewController.h */,
+				D64D18AA286A475C0040E439 /* HomeFeedViewController.m */,
+				D64D18A9286A475C0040E439 /* HomeFeedViewController.h */,
+				D64D18A7286A474F0040E439 /* LoginViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		D61D61E0286E44630083B1FE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D64D18B8286A6DF60040E439 /* PostTableViewCell.h */,
+				D64D18B9286A6DF60040E439 /* PostTableViewCell.m */,
+				D6E5C507286B7B01003850E3 /* PostCollectionCell.h */,
+				D6E5C508286B7B01003850E3 /* PostCollectionCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D61D61E1286E44740083B1FE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D64D18B5286A5E590040E439 /* Post.h */,
+				D64D18B6286A5E590040E439 /* Post.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D650BED3286A3F7700D28D22 = {
 			isa = PBXGroup;
 			children = (
@@ -180,24 +219,9 @@
 				D650BEED286A3F7800D28D22 /* LaunchScreen.storyboard */,
 				D650BEF0286A3F7800D28D22 /* Info.plist */,
 				D650BEF1286A3F7800D28D22 /* main.m */,
-				D64D18A6286A474F0040E439 /* LoginViewController.h */,
-				D64D18A7286A474F0040E439 /* LoginViewController.m */,
-				D64D18A9286A475C0040E439 /* HomeFeedViewController.h */,
-				D64D18AA286A475C0040E439 /* HomeFeedViewController.m */,
-				D64D18AF286A49550040E439 /* ProfileViewController.h */,
-				D64D18B0286A49550040E439 /* ProfileViewController.m */,
-				D64D18B2286A535A0040E439 /* ImagePickerViewController.h */,
-				D64D18B3286A535A0040E439 /* ImagePickerViewController.m */,
-				D64D18B5286A5E590040E439 /* Post.h */,
-				D64D18B6286A5E590040E439 /* Post.m */,
-				D64D18B8286A6DF60040E439 /* PostTableViewCell.h */,
-				D64D18B9286A6DF60040E439 /* PostTableViewCell.m */,
-				D64D18BB286AAFFF0040E439 /* DetailsViewController.h */,
-				D64D18BC286AAFFF0040E439 /* DetailsViewController.m */,
-				D6E5C507286B7B01003850E3 /* PostCollectionCell.h */,
-				D6E5C508286B7B01003850E3 /* PostCollectionCell.m */,
-				D6E5C50A286B8086003850E3 /* EditProfileViewController.h */,
-				D6E5C50B286B8086003850E3 /* EditProfileViewController.m */,
+				D61D61E1286E44740083B1FE /* Models */,
+				D61D61E0286E44630083B1FE /* Views */,
+				D61D61DF286E442C0083B1FE /* View Controllers */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";

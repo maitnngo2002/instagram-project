@@ -128,6 +128,7 @@
                                                 </label>
                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PzX-63-rMC">
                                                     <rect key="frame" x="9" y="11" width="60" height="60"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="lfm-fE-W8R"/>
                                                         <constraint firstAttribute="width" constant="60" id="mbL-kk-Umn"/>
@@ -287,6 +288,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#like" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAp-eh-1q1">
+                                <rect key="frame" x="44" y="598" width="36" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBZ-Vy-eIl">
+                                <rect key="frame" x="97" y="598" width="34" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RcQ-EE-bd2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -295,6 +310,7 @@
                     <connections>
                         <outlet property="captionLabel" destination="1KG-5a-DdC" id="4pb-Tn-nV5"/>
                         <outlet property="dateLabel" destination="3kW-Gp-tMq" id="we0-hA-rLJ"/>
+                        <outlet property="likeCount" destination="gAp-eh-1q1" id="rr2-wK-96i"/>
                         <outlet property="postImageView" destination="mp2-AO-IQu" id="xgM-A5-5Hv"/>
                         <outlet property="usernameLabel" destination="Lg3-Wb-yZd" id="i2J-zY-Hdt"/>
                     </connections>
@@ -380,7 +396,7 @@
         <!--Profile View Controller-->
         <scene sceneID="4nW-L4-JRS">
             <objects>
-                <viewController title="Profile View Controller" id="aeI-wf-BVq" customClass="ProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" title="Profile View Controller" id="aeI-wf-BVq" customClass="ProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YoC-Fo-ws1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -565,7 +581,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="qKf-au-qHA"/>
-        <segue reference="R4d-LP-iPH"/>
+        <segue reference="khb-HQ-gEd"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="button:CYg-2Y-vHW:image" width="30" height="30">
