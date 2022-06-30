@@ -49,7 +49,11 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![ezgif com-gif-maker (4)](https://user-images.githubusercontent.com/63086003/176793840-87cc5cbe-922d-42e2-bb72-8da39ed76a1f.gif)
+![ezgif com-gif-maker (5)](https://user-images.githubusercontent.com/63086003/176793874-7c326687-bcaa-46ad-b076-02afce6c910b.gif)
+![ezgif com-gif-maker (6)](https://user-images.githubusercontent.com/63086003/176793872-f9486a6c-47f3-46bf-b41e-b4f2599c97f7.gif)
+![ezgif com-gif-maker (7)](https://user-images.githubusercontent.com/63086003/176793868-76870e67-0971-4fc2-9095-78aa311e290e.gif)
+
 
 GIF created with [Kap](https://getkap.co/).
 
