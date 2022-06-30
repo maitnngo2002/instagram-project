@@ -12,7 +12,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [self.profileView setUserInteractionEnabled:YES];
     UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUserProfile:)];
     [self.profileView addGestureRecognizer:profileTapGestureRecognizer];
     [self.profileView setUserInteractionEnabled:YES];

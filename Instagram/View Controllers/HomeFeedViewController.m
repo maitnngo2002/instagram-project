@@ -88,7 +88,6 @@
                 self.posts = (NSMutableArray *) posts;
             }
             [self.tableView reloadData];
-            NSLog(@"😎😎😎 Successfully loaded home timeline");
         }
         else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
@@ -115,10 +114,6 @@
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
         }
-        else {
-            NSLog(@"Logout successful!");
-        }
-        
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         self.view.window.rootViewController = loginViewController;
@@ -185,20 +180,8 @@
     [self.tableView reloadData];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if(!self.isMoreDataLoading){
-        int scrollViewContentHeight = self.tableView.contentSize.height;
-        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
-        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
-            self.isMoreDataLoading = true;
-            Post *lastPost = [self.posts lastObject];
-            NSDate *lastDate = lastPost.createdAt;
-            [self queryDatabaseWithFilter:lastDate];
-        }
-    }
-}
-
 - (void)postCell:(PostTableViewCell *)postCell didTap:(PFUser *)user{
     [self performSegueWithIdentifier:@"profileSegue" sender:user];
 }
+
 @end

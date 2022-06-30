@@ -36,8 +36,6 @@
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
-            NSLog(@"User registered successfully");
-
             // manually segue to logged in view
             [self performSegueWithIdentifier:@"loginSegue" sender:nil];
             self.usernameField.text = @"";
@@ -59,7 +57,6 @@
             NSLog(@"User log in failed: %@", error.localizedDescription);
             [self showAlert:error.localizedDescription];
         } else {
-            NSLog(@"User logged in successfully");
             [self performSegueWithIdentifier:@"loginSegue" sender:nil];
         }
     }];
@@ -90,9 +87,7 @@
         [alert addAction:okAction];
     }
     
-    [self presentViewController:alert animated:YES completion:^{
-        NSLog(@"Finished presenting alert");
-    }];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

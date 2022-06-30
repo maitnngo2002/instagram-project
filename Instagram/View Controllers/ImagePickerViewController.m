@@ -93,7 +93,6 @@
             NSLog(@"Error: %@", error.localizedDescription);
         }
         else {
-            NSLog(@"Post successful!");
             Post *newPost = [Post createPost:self.imageView.image withCaption:self.captionField.text];
             [self.delegate didPost:newPost];
             [self dismissViewControllerAnimated:YES completion:nil];
