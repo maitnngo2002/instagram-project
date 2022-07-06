@@ -29,6 +29,7 @@
     self.captionLabel.text = self.post.caption;
     self.usernameLabel.text = self.post.author.username;
     self.dateLabel.text = [self.post.createdAt shortTimeAgoSinceNow];
+    
 }
 
 @end

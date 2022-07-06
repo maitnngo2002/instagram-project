@@ -7,12 +7,15 @@
 
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
+#import "Foundation/Foundation.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 
 @end
+
+NSString *const loginSegue = @"loginSegue";
 
 @implementation LoginViewController
 
@@ -24,6 +27,26 @@
     [self registerUser];
 }
 - (IBAction)onTapLogin:(id)sender {
+    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+
+    NSMutableURLRequest *const request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://api.upcitemdb.com/prod/trial/lookup?upc=079298000085"]
+      cachePolicy:NSURLRequestUseProtocolCachePolicy
+      timeoutInterval:10.0];
+
+    [request setHTTPMethod:@"GET"];
+
+    NSURLSession *const session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *const dataTask = [session dataTaskWithRequest:request
+    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+      if (error) {
+        NSLog(@"%@", error);
+        dispatch_semaphore_signal(sema);
+      } else {
+        dispatch_semaphore_signal(sema);
+      }
+    }];
+    [dataTask resume];
+    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
     [self loginUser];
 }
 - (void)registerUser {
@@ -37,7 +60,7 @@
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
             // manually segue to logged in view
-            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+            [self performSegueWithIdentifier:loginSegue sender:nil];
             self.usernameField.text = @"";
             self.passwordField.text = @"";
         }
@@ -57,7 +80,7 @@
             NSLog(@"User log in failed: %@", error.localizedDescription);
             [self showAlert:error.localizedDescription];
         } else {
-            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+            [self performSegueWithIdentifier:loginSegue sender:nil];
         }
     }];
 }

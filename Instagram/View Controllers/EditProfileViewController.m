@@ -16,12 +16,15 @@
 
 @end
 
+NSString static *const imageKey = @"image";
+NSString static *const bioKey = @"bio";
+
 @implementation EditProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.user = [PFUser currentUser];
-    PFFileObject *image = [self.user objectForKey:@"image"];
+    PFFileObject *image = [self.user objectForKey:imageKey];
     [image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!data) {
             return NSLog(@"%@", error);
@@ -37,7 +40,7 @@
 - (IBAction)didTapDone:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
     NSString *bio = self.bioField.text;
-    [self.user setObject:bio forKey:@"bio"];
+    [self.user setObject:bio forKey:bioKey];
     [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         
     }];
@@ -82,7 +85,7 @@
     NSData *imageData = UIImageJPEGRepresentation(editedImage, 1);
     PFFileObject *imageFile = [PFFileObject fileObjectWithName:@"image.png" data: imageData];
     [imageFile saveInBackground];
-    [self.user setObject:imageFile forKey:@"image"];
+    [self.user setObject:imageFile forKey:imageKey];
     [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
         }

@@ -12,13 +12,15 @@
 
 @end
 
+NSString *const homeFeedViewController = @"HomeFeedViewController";
+
 @implementation SceneDelegate
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     if (PFUser.currentUser) {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            
-            self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeFeedViewController"];
+
+            self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:homeFeedViewController];
     }
 }
 @end

@@ -21,6 +21,9 @@
 
 @end
 
+NSString static *const detailSegue = @"detailSegue";
+NSString static *const editProfileSegue = @"editProfileSegue";
+
 @implementation ProfileViewController
 
 - (void)viewDidLoad {
@@ -88,14 +91,14 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier isEqualToString:@"detailSegue"]) {
+    if([segue.identifier isEqualToString:detailSegue]) {
         UICollectionViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
         Post *post = self.postsArray[indexPath.row];
         DetailsViewController *detailsViewController =  [segue destinationViewController];
         detailsViewController.post = post;
     }
-    else if ([segue.identifier isEqualToString:@"editProfileSegue"]) {
+    else if ([segue.identifier isEqualToString:editProfileSegue]) {
         EditProfileViewController *editProfileViewController =  [segue destinationViewController];
         editProfileViewController.user = self.user;
     }

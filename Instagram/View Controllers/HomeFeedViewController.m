@@ -26,6 +26,10 @@
 
 @end
 
+NSString static *const profileSegue = @"profileSegue";
+NSString static *const detailSegue = @"detailView";
+NSString static *const composeSegue = @"composePost";
+NSString static *const profileViewControllerStr = @"ProfileViewController";
 @implementation HomeFeedViewController
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -97,13 +101,13 @@
     }];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier isEqualToString:@"detailsView"]) {
+    if([segue.identifier isEqualToString:detailSegue]) {
         PostTableViewCell *tappedCell = sender;
         DetailsViewController *detailsViewController =  [segue destinationViewController];
         detailsViewController.post = tappedCell.post;
         detailsViewController.user = self.user;
     }
-    else if([segue.identifier isEqualToString:@"profileSegue"]) {
+    else if([segue.identifier isEqualToString:profileSegue]) {
         ProfileViewController *profileViewController =  [segue destinationViewController];
         profileViewController.user = sender;
     }
@@ -122,7 +126,7 @@
 }
 - (IBAction)didTapCameraIcon:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ImagePickerViewController *imagePickerViewController = [storyboard instantiateViewControllerWithIdentifier:@"composePost"];
+    ImagePickerViewController *imagePickerViewController = [storyboard instantiateViewControllerWithIdentifier:composeSegue];
     [self presentViewController:imagePickerViewController animated:YES completion:nil];
     
 }
@@ -183,7 +187,7 @@
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main"
                                                          bundle:nil];
     ProfileViewController *profileViewController =
-               [storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+               [storyboard instantiateViewControllerWithIdentifier:profileViewControllerStr];
 
     [self presentViewController:profileViewController
                        animated:YES
@@ -197,7 +201,7 @@
 }
 
 - (void)postCell:(PostTableViewCell *)postCell didTap:(PFUser *)user{
-    [self performSegueWithIdentifier:@"profileSegue" sender:user];
+    [self performSegueWithIdentifier:profileSegue sender:user];
 }
 
 @end
