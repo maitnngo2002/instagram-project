@@ -2,7 +2,7 @@
 
 **Instagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **X** hours spent in total
+Time spent: **12** hours spent in total
 
 ## User Stories
 
@@ -25,7 +25,7 @@ The following **optional** features are implemented:
 - User Profiles:
   - [x] Allow the logged in user to add a profile photo
   - [x] Display the profile photo with each post
-  - [ ] Tapping on a post's username or profile photo goes to that user's profile page
+  - [x] Tapping on a post's username or profile photo goes to that user's profile page
 - [x] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse
 - [ ] User can comment on a post and see all comments for each post in the post details screen
 - [x] User can like a post and see number of likes for each post in the post details screen
@@ -36,7 +36,8 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [x] Profile tab displays all posts posted by the user using CollectionView
-- [x] User could tap on a cell to see the details of that post
+- [x] User could tap on a cell in their profile tab to see the details of that post
+- [x] User could add a bio to their profile tab
 - [x] User will see an alert if the username or password field is empty or if they enter an invalid username/ incorrect password
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
@@ -48,7 +49,11 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![ezgif com-gif-maker (4)](https://user-images.githubusercontent.com/63086003/176793840-87cc5cbe-922d-42e2-bb72-8da39ed76a1f.gif)
+![ezgif com-gif-maker (5)](https://user-images.githubusercontent.com/63086003/176793874-7c326687-bcaa-46ad-b076-02afce6c910b.gif)
+![ezgif com-gif-maker (6)](https://user-images.githubusercontent.com/63086003/176793872-f9486a6c-47f3-46bf-b41e-b4f2599c97f7.gif)
+![ezgif com-gif-maker (7)](https://user-images.githubusercontent.com/63086003/176793868-76870e67-0971-4fc2-9095-78aa311e290e.gif)
+
 
 GIF created with [Kap](https://getkap.co/).
 
